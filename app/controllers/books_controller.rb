@@ -1,0 +1,102 @@
+class BooksController < ApplicationController
+  autocomplete :author, :name
+  helper_method :sort_column, :sort_direction
+
+  # GET /books
+  # GET /books.xml
+  def index
+    #@books = Book.all
+    @books = Book.order(sort_column + ' ' + sort_direction)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @books }
+    end
+  end
+
+  # GET /books/1
+  # GET /books/1.xml
+  def show
+    @book = Book.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @book }
+    end
+  end
+
+  # GET /books/new
+  # GET /books/new.xml
+  def new
+    @book = Book.new
+    @authors = Author.all
+
+#    2.times { @book.booksamples.build }
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @book }
+    end
+  end
+
+  # GET /books/1/edit
+  def edit
+    @book = Book.find(params[:id])
+    @authors = Author.all
+  end
+
+  # POST /books
+  # POST /books.xml
+  def create
+    @book = Book.new(params[:book])
+    @book.booksamples.build(params[:barcode])
+
+    respond_to do |format|
+      if @book.save
+        format.html { redirect_to(@book, :notice => 'Book was successfully created.') }
+        format.xml  { render :xml => @book, :status => :created, :location => @book }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /books/1
+  # PUT /books/1.xml
+  def update
+    @book = Book.find(params[:id])
+
+    respond_to do |format|
+      if @book.update_attributes(params[:book])
+        format.html { redirect_to(@book, :notice => 'Book was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /books/1
+  # DELETE /books/1.xml
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(books_url) }
+      format.xml  { head :ok }
+    end
+  end
+
+  private
+  def sort_column
+    Book.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+end

@@ -1,0 +1,19 @@
+<h1 align="center">Latest Books</h1>
+<hr/>
+<% @latest_books.each do |book|%>
+<table>
+  <tr>
+    <th align="center">Capa</th>
+    <th align="center">Título</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= image_tag book.cover.url(:thumb) %></td>
+    <td><%= link_to book.title.titlecase, book %></td>
+    <td>   <%= link_to 'Editar', edit_book_path(book) %> |</td>
+    <td><%= link_to 'Excluir', book, :confirm => 'Certeza?', :method => :delete %></td>
+  </tr>
+</table>
+<% end %>
+<p align="right"><%= link_to 'See More', books_path %></p>

@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <center>
+    <h1><%= @author.name %></h1>
+    <%= link_to 'Editar Autor(a)', edit_author_path(@author) %>
+  </center>
+</p>
+<center><h3>Biografia</h3></center>
+<table>
+  </tr>
+  <tr>
+    <td>
+      <%= image_tag @author.avatar.url(:medium) %>
+    </td>
+    <td  valing="center" halign="center">
+      <%= @author.biograph %>
+    </td>
+  </tr>
+</table>
+<br/>
+<hr/>
+<div class="book_gallery">
+  <h3 align="center">Livros</h3>
+  <p align="right"><%= link_to 'Novo Livro', new_book_path(:author_name => @author.name) %></p>
+  <div class="book_thumb">
+      <% if @author.books.empty?%>
+      <center> Sem livros ainda. Quer <%= link_to 'acrescentar', new_book_path %>?
+      <% else %>
+        <% @author.books.each do |book| %>
+          <center>
+          <table>
+            <tr>
+                <td>
+                    <% if book.cover? %>
+                      <center><%= image_tag book.cover.url(:thumb) %></center><br/>
+                    <% end %>
+                <%= link_to book.title, book %>
+                </td>
+            <tr>
+          </table>
+          </center>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+<hr/><br/>
+
+<%= link_to 'Voltar', authors_path %>

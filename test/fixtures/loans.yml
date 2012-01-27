@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  loan_date: 2011-12-18
+  deliver_date: 2011-12-18
+  student: 
+  booksample: 
+
+two:
+  loan_date: 2011-12-18
+  deliver_date: 2011-12-18
+  student: 
+  booksample: 

@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div id="book_show">
+
+    <center>
+      <%= image_tag @book.cover.url(:medium) %>
+    </center>
+
+    <p>
+      <b>Title:</b> <%= @book.title %>
+    </p>
+
+    <p>
+      <b>Isbn:</b> <%= @book.isbn %>
+    </p>
+
+    <p>
+      <b>Volume #</b> <%= @book.volume %>
+    </p>
+
+    <p>
+      <b>Edition #</b> <%= @book.edition %>
+    </p>
+
+    <p>
+      <b>Publisher: </b> <%= @book.publisher %>
+    </p>
+
+    <p>
+      <b>Author:</b> <%= link_to @book.author.name , @book.author  %>
+    </p>
+
+  <% if @book.booksamples.empty? %>
+<hr/>
+    <h3 align="center">No Samples Yet, please, correct this!</h3>
+  <% else %>
+    <ol>
+    <% @book.booksamples.each do |bs| %>
+      <li><%= bs.barcode %></li>
+    <% end %>
+    </ol>
+<hr/>
+  <% end %>
+
+</div>
+
+<%= link_to 'Editar', edit_book_path(@book) %> |
+<%= link_to 'Voltar', books_path %>

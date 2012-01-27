@@ -1,0 +1,30 @@
+<h1>Listing books</h1>
+
+<% if @books.empty? %>
+  <h3 align="center"> No books just yet. Do you wanna <%= link_to "add one?", new_book_path %> </h3>
+<% else %>
+<div id="links" align="right">
+  <%= link_to 'Novo Livro', new_book_path %>
+</div>
+<table>
+  <tr>
+    <th>Capa</th>
+    <th><%= sortable "title","Título" %></th>
+    <th>Autor(a)</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @books.each do |book| %>
+  <tr>
+    <td><%= image_tag book.cover.url(:thumb) %></td>
+    <td><%= link_to book.title.titlecase, book %></td>
+    <td><%= link_to book.author.name.titlecase, book.author %></td>
+    <td>   <%= link_to 'Editar', edit_book_path(book) %> |</td>
+    <td><%= link_to 'Excluir', book, :confirm => 'Certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% end %>
