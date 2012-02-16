@@ -12,12 +12,13 @@
 
 <p>
   <b>Student:</b>
-  <%= @loan.student %>
+  <%= @loan.student.name %><br/>
+  <b>Registration:</b> <%= @loan.student.registration %>
 </p>
 
 <p>
   <b>Booksample:</b>
-  <%= @loan.booksample %>
+  <%= @loan.booksample.barcode %>, from <%= @loan.booksample.book.title %>
 </p>
 
 

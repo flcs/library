@@ -2,7 +2,7 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.xml
   def index
-    @loans = Loan.all
+    @loans = Loan.order(:deliver_date)
 
     respond_to do |format|
       format.html # index.html.erb

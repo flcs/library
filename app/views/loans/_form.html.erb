@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :student %><br />
-    <%= f.text_field :student %>
+    <%= collection_select(:loan, :student_id, Student.all, :id, :registration) %>
   </div>
   <div class="field">
     <%= f.label :booksample %><br />
-    <%= f.text_field :booksample %>
+    <%= collection_select(:loan, :booksample_id, Booksample.all, :id, :barcode) %>
   </div>
   <div class="actions">
     <%= f.submit %>

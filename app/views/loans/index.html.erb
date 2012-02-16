@@ -15,8 +15,8 @@
   <tr>
     <td><%= loan.loan_date %></td>
     <td><%= loan.deliver_date %></td>
-    <td><%= loan.student %></td>
-    <td><%= loan.booksample %></td>
+    <td><%= loan.student.registration %></td>
+    <td><%= link_to loan.booksample.book.title, loan.booksample.book %></td>
     <td><%= link_to 'Show', loan %></td>
     <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
     <td><%= link_to 'Destroy', loan, :confirm => 'Are you sure?', :method => :delete %></td>
