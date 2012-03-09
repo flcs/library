@@ -1,5 +1,5 @@
 #Guia de Instalação
-
+Ps: para uma instalação automática, rode o arquivo isntall.sh
 ##Pré Requisitos
 1. Ruby 1.9.2
 2. Gem rails 3.0.10
