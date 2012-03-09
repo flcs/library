@@ -1,1 +1,19 @@
-#Coming Soon
+#Guia de Instalação
+
+##Pré Requisitos
+1. Ruby 1.9.2
+2. Gem rails 3.0.10
+3. Gem sqlite3 1.3.5
+3. Gem paperclip 2.4.5
+4. Gem jquerry-rails 1.0.19
+5. Gem rails3-jquery-autocomplete 1.0.5
+
+#A Instalação
+Dentro do diretório raíz da aplicação, rode o comando:
+    bundle install
+Esse comando irá se encarregar de instalar todos as gems necessárias para o projeto
+
+Em seguida basta rodar
+    rails server
+      *optionally you can run it like: rails server -p 1000, to force it to run under a specific port.
+
